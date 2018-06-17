@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang='en'>
+<head>
+		<meta charset='UTF-8'>
+</head>
+<body>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.24/rx.all.js'></script>
+		<script>
+				// let clicks = 0;
+				// document.addEventListener('click', function eventClicks(e) {
+				// 	if (clicks < 5) {
+				// 		if (e.clientY < window.innerHeight / 2) {
+				// 			++clicks;
+				// 			console.log('click');
+				// 		}
+				// 	} else {
+				// 		document.removeEventListener('click', eventClicks);
+				// 	}
+				// })
+
+				Rx.Observable.fromEvent(document, 'click')
+					.filter( e => e.clientY < window.innerHeight / 2)
+					.take(5)
+					.subscribe( () => console.log('click'))
+		</script>
+</body>
+</html>
